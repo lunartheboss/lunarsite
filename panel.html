@@ -3,140 +3,124 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lunarcheck Panel</title>
+  <title>MERNİS</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Open Sans', sans-serif;
       margin: 0;
-      padding: 0;
-      background-color: #8bc34a; /* Lime color theme */
-    }
-
-    .panel {
       display: flex;
+      justify-content: center;
+      align-items: center;
       height: 100vh;
-    }
-
-    .sidebar {
-      width: 250px;
-      background-color: #4caf50; /* Darker green for the sidebar */
+      background: linear-gradient(to right, #2ecc71, #27ae60);
       color: #fff;
+    }
+
+    .mernis-container {
+      background-color: #ffffff;
       padding: 20px;
-      box-sizing: border-box;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      animation: fadeIn 1s ease-out;
     }
 
-    .main-content {
-      flex: 1;
-      padding: 20px;
-      box-sizing: border-box;
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
     }
 
-    .category-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    .category-item {
-      margin-bottom: 10px;
-    }
-
-    .category-link {
-      text-decoration: none;
-      color: #fff;
-      font-weight: bold;
-      font-size: 16px;
+    label {
       display: block;
-      padding: 8px;
-      border-radius: 4px;
-      transition: background-color 0.3s ease;
+      margin-bottom: 8px;
     }
 
-    .category-link:hover {
-      background-color: #3d8b40; /* Darker green on hover */
-    }
-
-    /* Input styles */
     input {
       width: 100%;
       padding: 8px;
-      margin-bottom: 10px;
+      margin-bottom: 16px;
       box-sizing: border-box;
     }
 
     button {
-      background-color: #4caf50; /* Original green color */
+      background-color: #1abc9c;
       color: #fff;
       padding: 10px;
       border: none;
       border-radius: 4px;
       cursor: pointer;
-      font-size: 1.2em;
       transition: background-color 0.3s ease;
     }
 
     button:hover {
-      background-color: #3d8b40; /* Darker green on hover */
+      background-color: #16a085;
     }
   </style>
 </head>
 <body>
 
-<div class="panel">
-  <div class="sidebar">
-    <h2>Lunarcheck Sidebar</h2>
-    <ul class="category-list">
-      <li class="category-item"><a href="#" class="category-link">Category 1</a></li>
-      <li class="category-item"><a href="#" class="category-link">Category 2</a></li>
-      <li class="category-item"><a href="#" class="category-link">Category 3</a></li>
-      <li class="category-item"><a href="#" class="category-link">MERNİS</a></li>
-      <!-- Add more categories as needed -->
-    </ul>
-  </div>
+<div class="mernis-container">
+  <h2>MERNİS - TC Sorgula</h2>
+  <label for="tc">TC:</label>
+  <input type="text" id="tc" name="tc" required>
+  <button onclick="queryTcData()">Sorgula</button>
 
-  <div class="main-content">
-    <h2>MERNİS Content</h2>
-    <label for="tc">TC:</label>
-    <input type="text" id="tc" name="tc" maxlength="11" placeholder="Enter TC">
+  <div id="tcResult"></div>
 
-    <button onclick="sorgula()">SORGULA</button>
+  <h2>MERNİS - Ad Soyad Sorgula</h2>
+  <label for="ad">Ad:</label>
+  <input type="text" id="ad" name="ad" required>
 
-    <label for="gsm">GSM:</label>
-    <input type="text" id="gsm" name="gsm" readonly>
+  <label for="soyad">Soyad:</label>
+  <input type="text" id="soyad" name="soyad" required>
 
-    <hr>
+  <button onclick="queryAdSoyadData()">Sorgula</button>
 
-    <label for="ad">AD:</label>
-    <input type="text" id="ad" name="ad" placeholder="Enter AD">
-
-    <label for="soyad">SOYAD:</label>
-    <input type="text" id="soyad" name="soyad" placeholder="Enter SOYAD">
-
-    <button onclick="validateAndAlert()">Submit</button>
-  </div>
+  <div id="adSoyadResult"></div>
 </div>
 
 <script>
-  function sorgula() {
-    var tcValue = document.getElementById('tc').value;
-    if (tcValue === '') {
-      alert('Please enter TC.');
-      return;
-    }
-
-    // Simulating database check
-    var gsmElement = document.getElementById('gsm');
-    gsmElement.value = '12345678901'; // Set a dummy value for demonstration
-    alert('DataFoundAw');
+  function queryTcData() {
+    const tc = document.getElementById('tc').value;
+    // Assuming you have a backend API endpoint for TC queries
+    fetch(`/api/query-tc/${tc}`)
+      .then(response => response.json())
+      .then(data => {
+        if (data.length > 0) {
+          displayResult(data);
+        } else {
+          alert('Data yok');
+        }
+      })
+      .catch(error => console.error('Error:', error));
   }
 
-  function validateAndAlert() {
-    var adValue = document.getElementById('ad').value;
-    var soyadValue = document.getElementById('soyad').value;
+  function queryAdSoyadData() {
+    const ad = document.getElementById('ad').value;
+    const soyad = document.getElementById('soyad').value;
+    // Assuming you have a backend API endpoint for Ad Soyad queries
+    fetch(`/api/query-ad-soyad/${ad}/${soyad}`)
+      .then(response => response.json())
+      .then(data => {
+        if (data.length > 0) {
+          displayResult(data);
+        } else {
+          alert('Data yok');
+        }
+      })
+      .catch(error => console.error('Error:', error));
+  }
 
-    if (adValue === '' || soyadValue === '' || !/^[a-zA-Z]+$/.test(adValue) || !/^[a-zA-Z]+$/.test(soyadValue)) {
-      alert('Data yok, admine yaz aw');
-    } else {
-      alert('DataSubmittedAw');
-    }
- 
+  function displayResult(data) {
+    const resultDiv = document.createElement('div');
+    resultDiv.innerHTML = `<p>${JSON.stringify(data)}</p>`;
+    document.getElementById('tcResult').appendChild(resultDiv);
+    document.getElementById('adSoyadResult').appendChild(resultDiv.cloneNode(true));
+  }
+</script>
+
+</body>
+</html>

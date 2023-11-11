@@ -1,38 +1,38 @@
 function toggleSidebar() {
-  const sidebar = document.getElementById("sidebar");
-  sidebar.classList.toggle("closed");
-  const mainPanel = document.getElementById("mainPanel");
-  mainPanel.style.marginLeft = sidebar.classList.contains("closed") ? "0" : "250px";
+    var sidebar = document.getElementById('sidebar');
+    var mainContent = document.getElementById('main-content');
+
+    if (sidebar.style.left === '0px' || sidebar.style.left === '') {
+        sidebar.style.left = '-200px';
+        mainContent.style.marginLeft = '0';
+    } else {
+        sidebar.style.left = '0';
+        mainContent.style.marginLeft = '200px';
+    }
 }
 
 function leave() {
-  // Show loading screen for 3 seconds
-  setTimeout(() => {
-    window.location.href = "index.html";
-  }, 3000);
+    document.body.innerHTML = '<div class="loading-dot"></div>';
+    setTimeout(function () {
+        window.location.href = 'index.html';
+    }, 3000);
 }
 
-function validateTCInput(input) {
-  const tcWarningMsg = document.getElementById("tcWarningMsg");
-  if (!/^\d+$/.test(input.value)) {
-    tcWarningMsg.textContent = "Please enter only numbers.";
-  } else if (input.value.length < 12) {
-    tcWarningMsg.textContent = "Incorrect entry";
-  } else {
-    tcWarningMsg.textContent = "";
-  }
+function performGsmQuery() {
+    var gsmInput = document.getElementById('gsmInput').value;
+    var gsmWarning = document.getElementById('gsmWarning');
+
+    // Example: Checking if the input is less than 12
+    if (gsmInput.length < 12) {
+        gsmWarning.style.display = 'block';
+    } else {
+        gsmWarning.style.display = 'none';
+        // Implement GSM query logic here
+    }
 }
 
-function validateTextInput(input) {
-  if (input.value.trim() === "") {
-    input.style.borderColor = "red";
-  } else {
-    input.style.borderColor = "";
-  }
+function performNameQuery() {
+    // Implement name query logic here
 }
 
-function sorgula(type) {
-  const resultBox = document.getElementById("resultBox");
-  // Implement database interaction and display data in resultBox
-  resultBox.textContent = "Data will be displayed here"; // Replace with actual data
-}
+// Additional JavaScript code as needed

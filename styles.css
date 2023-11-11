@@ -1,49 +1,59 @@
 body {
-  font-family: 'Open Sans', sans-serif;
-  background-color: lime;
-  margin: 0;
+    background-color: black;
+    color: lime;
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
 }
 
 #sidebar {
-  background-color: #333;
-  color: white;
-  padding: 10px;
-  transition: 0.3s;
+    width: 200px;
+    height: 100vh;
+    background-color: #222;
+    position: fixed;
+    left: 0;
+    top: 0;
+    padding: 20px;
 }
 
-#mainPanel {
-  margin-left: 0;
-  padding: 20px;
-  transition: margin-left 0.3s;
+#main-content {
+    margin-left: 200px;
+    padding: 20px;
 }
 
-.glowingBox {
-  background-color: #00ff00;
-  padding: 20px;
-  margin: 20px;
-  border-radius: 10px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-  position: relative;
-  overflow: hidden;
+.glowing-box {
+    background-color: #333;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 20px lime;
 }
 
-.bigWideBox {
-  width: 80vw;
+h2 {
+    color: lime;
 }
 
-.glowingBtn {
-  background-color: #55ff55;
-  color: #ffffff;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
+input, button {
+    padding: 10px;
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
 }
 
-#tcWarningMsg {
-  color: red;
+input[type="text"] {
+    width: 200px;
 }
 
-#resultBox {
-  margin-top: 20px;
+button {
+    background-color: lime;
+    color: black;
+    cursor: pointer;
+}
+
+.flags, .countries {
+    display: flex;
+    gap: 10px;
+}
+
+#results {
+    display: none;
+    /* Additional styling for results box */
 }

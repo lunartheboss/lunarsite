@@ -3,21 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MERNİS</title>
+  <title>MERNİS Sorgulama</title>
   <style>
     body {
       font-family: 'Open Sans', sans-serif;
       margin: 0;
       display: flex;
-      justify-content: center;
+      flex-direction: column;
       align-items: center;
+      justify-content: center;
       height: 100vh;
-      background: linear-gradient(to right, #2ecc71, #27ae60);
+      background-color: #2ecc71;
       color: #fff;
     }
 
-    .mernis-container {
-      background-color: #ffffff;
+    .category-container {
+      background-color: #27ae60;
       padding: 20px;
       border-radius: 8px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -58,69 +59,87 @@
     button:hover {
       background-color: #16a085;
     }
+
+    .result {
+      margin-top: 20px;
+      color: #2ecc71;
+      font-weight: bold;
+    }
   </style>
 </head>
 <body>
 
-<div class="mernis-container">
-  <h2>MERNİS - TC Sorgula</h2>
+<div class="category-container" id="mernis">
+  <h2>MERNİS Sorgulama</h2>
   <label for="tc">TC:</label>
-  <input type="text" id="tc" name="tc" required>
-  <button onclick="queryTcData()">Sorgula</button>
+  <input type="text" id="tc" required>
+  <button onclick="mernisSorgula()">SORGULA</button>
+  <p class="result" id="mernisResult"></p>
+</div>
 
-  <div id="tcResult"></div>
-
-  <h2>MERNİS - Ad Soyad Sorgula</h2>
+<div class="category-container" id="adSoyad">
+  <h2>Ad Soyad Sorgulama</h2>
   <label for="ad">Ad:</label>
-  <input type="text" id="ad" name="ad" required>
-
+  <input type="text" id="ad" required>
   <label for="soyad">Soyad:</label>
-  <input type="text" id="soyad" name="soyad" required>
-
-  <button onclick="queryAdSoyadData()">Sorgula</button>
-
-  <div id="adSoyadResult"></div>
+  <input type="text" id="soyad" required>
+  <button onclick="adSoyadSorgula()">SORGULA</button>
+  <p class="result" id="adSoyadResult"></p>
 </div>
 
 <script>
-  function queryTcData() {
+  function mernisSorgula() {
     const tc = document.getElementById('tc').value;
-    // Assuming you have a backend API endpoint for TC queries
-    fetch(`/api/query-tc/${tc}`)
-      .then(response => response.json())
-      .then(data => {
-        if (data.length > 0) {
-          displayResult(data);
-        } else {
-          alert('Data yok');
-        }
-      })
-      .catch(error => console.error('Error:', error));
+    // Simulate database query
+    const dataFromDatabase = queryDatabaseForMernis(tc);
+
+    if (dataFromDatabase) {
+      document.getElementById('mernisResult').innerText = `GSM: ${dataFromDatabase.gsm}`;
+    } else {
+      alert('Data yok');
+    }
   }
 
-  function queryAdSoyadData() {
+  function adSoyadSorgula() {
     const ad = document.getElementById('ad').value;
     const soyad = document.getElementById('soyad').value;
-    // Assuming you have a backend API endpoint for Ad Soyad queries
-    fetch(`/api/query-ad-soyad/${ad}/${soyad}`)
-      .then(response => response.json())
-      .then(data => {
-        if (data.length > 0) {
-          displayResult(data);
-        } else {
-          alert('Data yok');
-        }
-      })
-      .catch(error => console.error('Error:', error));
+    // Simulate database query
+    const dataFromDatabase = queryDatabaseForAdSoyad(ad, soyad);
+
+    if (dataFromDatabase) {
+      const resultText = `Ad: ${dataFromDatabase.ad}\nSoyad: ${dataFromDatabase.soyad}\nTC: ${dataFromDatabase.tc}\nDoğum Tarihi: ${dataFromDatabase.dogumtarihi}\nBaba Adı: ${dataFromDatabase.babaadi}\nBaba TC: ${dataFromDatabase.babatc}\nAnne Adı: ${dataFromDatabase.anneadi}\nAnne TC: ${dataFromDatabase.annetc}\nUyruk: ${dataFromDatabase.uyruk}`;
+      document.getElementById('adSoyadResult').innerText = resultText;
+    } else {
+      alert('Data yok');
+    }
   }
 
-  function displayResult(data) {
-    const resultDiv = document.createElement('div');
-    resultDiv.innerHTML = `<p>${JSON.stringify(data)}</p>`;
-    document.getElementById('tcResult').appendChild(resultDiv);
-    document.getElementById('adSoyadResult').appendChild(resultDiv.cloneNode(true));
-  }
-</script>
+  // Simulated database functions
+  function queryDatabaseForMernis(tc) {
+    // Replace this with your actual database query logic
+    const database = {
+      '12345678901': { gsm: '5551234567' },
+      // Add more data here
+    };
 
-</body>
-</html>
+    return database[tc] || null;
+  }
+
+  function queryDatabaseForAdSoyad(ad, soyad) {
+    // Replace this with your actual database query logic
+    const database = {
+      'JohnDoe': {
+        ad: 'John',
+        soyad: 'Doe',
+        tc: '12345678901',
+        dogumtarihi: '01.01.1980',
+        babaadi: 'Michael Doe',
+        babatc: '98765432101',
+        anneadi: 'Sarah Doe',
+        annetc: '65432198701',
+        uyruk: 'TR',
+      },
+      // Add more data here
+    };
+
+    const key

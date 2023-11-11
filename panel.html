@@ -8,7 +8,8 @@
 </head>
 <body>
     <div id="sidebar">
-        <!-- Sidebar content, including the leave option -->
+        <button id="toggleSidebarBtn" onclick="toggleSidebar()">&#9776; Toggle Sidebar</button>
+        <button id="leaveBtn" onclick="leave()">Leave</button>
     </div>
     
     <div id="main-content">
@@ -16,10 +17,12 @@
             <h2>GSM SORGULAMA</h2>
             <input type="text" id="gsmInput" placeholder="GSM YADA TC">
             <button onclick="performGsmQuery()">SORGULA</button>
-            <!-- Checkboxes for flags -->
             <div class="flags">
-                <!-- Add checkboxes for Turkey, USA, and Russia flags -->
+                <label><input type="checkbox" value="turkey"> Turkey</label>
+                <label><input type="checkbox" value="usa"> USA</label>
+                <label><input type="checkbox" value="russia"> Russia</label>
             </div>
+            <p id="gsmWarning" class="warning">Incorrect entry</p>
         </div>
 
         <div class="glowing-box">
@@ -27,13 +30,13 @@
             <input type="text" id="adInput" placeholder="Ad">
             <input type="text" id="soyadInput" placeholder="Soyad">
             <button onclick="performNameQuery()">SORGULA</button>
-            <!-- Checkboxes for countries -->
             <div class="countries">
-                <!-- Add checkboxes for Turkey, USA, and Russia -->
+                <label><input type="checkbox" value="turkey"> Turkey</label>
+                <label><input type="checkbox" value="usa"> USA</label>
+                <label><input type="checkbox" value="russia"> Russia</label>
             </div>
         </div>
 
-        <!-- Display results box -->
         <div id="results" class="glowing-box">
             <!-- Display the retrieved data here -->
         </div>

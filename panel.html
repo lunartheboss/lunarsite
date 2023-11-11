@@ -1,35 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LUNARCHECK</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>LUNARCHECK</title>
 </head>
 <body>
-  <div id="sidebar" class="closed">
-    <button id="toggleSidebarBtn" onclick="toggleSidebar()">☰</button>
-    <button id="leaveBtn" onclick="leave()">Leave</button>
-  </div>
-  <div id="mainPanel">
-    <div class="glowingBox" id="tcBox">
-      <h2>TC-GSM SORGULAMA</h2>
-      <input type="text" id="tcInput" placeholder="TC" oninput="validateTCInput(this)">
-      <button class="glowingBtn" onclick="sorgula('tc')">SORGULA</button>
-      <div id="tcWarningMsg"></div>
+    <div id="sidebar">
+        <!-- Sidebar content, including the leave option -->
+    </div>
+    
+    <div id="main-content">
+        <div class="glowing-box">
+            <h2>GSM SORGULAMA</h2>
+            <input type="text" id="gsmInput" placeholder="GSM YADA TC">
+            <button onclick="performGsmQuery()">SORGULA</button>
+            <!-- Checkboxes for flags -->
+            <div class="flags">
+                <!-- Add checkboxes for Turkey, USA, and Russia flags -->
+            </div>
+        </div>
+
+        <div class="glowing-box">
+            <h2>AD SOYAD SORGULAMA</h2>
+            <input type="text" id="adInput" placeholder="Ad">
+            <input type="text" id="soyadInput" placeholder="Soyad">
+            <button onclick="performNameQuery()">SORGULA</button>
+            <!-- Checkboxes for countries -->
+            <div class="countries">
+                <!-- Add checkboxes for Turkey, USA, and Russia -->
+            </div>
+        </div>
+
+        <!-- Display results box -->
+        <div id="results" class="glowing-box">
+            <!-- Display the retrieved data here -->
+        </div>
     </div>
 
-    <div class="glowingBox bigWideBox" id="adSoyadBox">
-      <h2>AD SOYAD SORGULAMA</h2>
-      <input type="text" id="adInput" placeholder="Ad" oninput="validateTextInput(this)">
-      <input type="text" id="soyadInput" placeholder="Soyad" oninput="validateTextInput(this)">
-      <button class="glowingBtn" onclick="sorgula('adSoyad')">SORGULA</button>
-      <div id="resultBox">
-        <!-- Data will be displayed here -->
-      </div>
-    </div>
-  </div>
-
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>

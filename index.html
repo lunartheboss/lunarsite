@@ -3,36 +3,61 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login and Register</title>
+  <title>Login Panel</title>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Open Sans', sans-serif;
       margin: 0;
       display: flex;
-      align-items: center;
       justify-content: center;
+      align-items: center;
       height: 100vh;
-      background-color: #f4f4f4;
+      background-color: #2ecc71; /* Lime color theme */
     }
 
-    .auth-container {
+    .login-container {
       background-color: #fff;
+      padding: 20px;
       border-radius: 8px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      overflow: hidden;
-      width: 300px;
-    }
-
-    .tab {
-      padding: 10px;
       text-align: center;
-      cursor: pointer;
-      background-color: #3498db;
+      animation: fadeIn 1s ease-out;
+    }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Panel</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap">
+  <style>
+    body {
+      font-family: 'Open Sans', sans-serif;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #2ecc71;
       color: #fff;
     }
 
-    .content {
+    .login-container {
+      background-color: #1abc9c;
       padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      animation: fadeIn 1s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
     }
 
     label {
@@ -54,8 +79,8 @@
       border: none;
       border-radius: 4px;
       cursor: pointer;
-      width: 100%;
-      font-size: 1.2em;
+      font-size: 1em;
+      transition: background-color 0.3s ease;
     }
 
     button:hover {
@@ -65,52 +90,31 @@
 </head>
 <body>
 
-<div class="auth-container">
-  <div class="tab" onclick="showLogin()">Login</div>
-  <div class="tab" onclick="showRegister()">Register</div>
-  <div class="content" id="loginContent">
-    <h2>Login</h2>
-    <label for="loginUsername">Username:</label>
-    <input type="text" id="loginUsername" name="loginUsername" required>
+<div class="login-container">
+  <h2>Login Panel</h2>
+  <form id="loginForm" onsubmit="validateLogin()">
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" required>
 
-    <label for="loginPassword">Password:</label>
-    <input type="password" id="loginPassword" name="loginPassword" required>
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required>
 
-    <button onclick="login()">Login</button>
-  </div>
-  <div class="content" id="registerContent" style="display: none;">
-    <h2>Register</h2>
-    <label for="registerUsername">Username:</label>
-    <input type="text" id="registerUsername" name="registerUsername" required>
-
-    <label for="registerPassword">Password:</label>
-    <input type="password" id="registerPassword" name="registerPassword" required>
-
-    <button onclick="register()">Register</button>
-  </div>
+    <button type="submit">Login</button>
+  </form>
 </div>
 
 <script>
-  function showLogin() {
-    document.getElementById('loginContent').style.display = 'block';
-    document.getElementById('registerContent').style.display = 'none';
-  }
+  function validateLogin() {
+    var username = document.getElementById("username").value;
+    var password = document.getElementById("password").value;
 
-  function showRegister() {
-    document.getElementById('loginContent').style.display = 'none';
-    document.getElementById('registerContent').style.display = 'block';
-  }
+    if ((username === "admin" && password === "lunarcheck123") || (username === "okan" && password === "lunarcheck123")) {
+      window.location.href = "redirect.html";
+    } else {
+      alert("Incorrect username or password");
+    }
 
-  function login() {
-    alert("Login button clicked! Add your login logic here.");
-    // Add your login logic here
-    // Redirect to welcome.html if login is successful
-    window.location.href = 'welcome.html';
-  }
-
-  function register() {
-    alert("Register button clicked! Add your register logic here.");
-    // Add your register logic here
+    return false; // Prevent form submission
   }
 </script>
 

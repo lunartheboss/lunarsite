@@ -30,7 +30,10 @@ function validateTextInput(input) {
 }
 
 function sorgula(type) {
-  const resultBox = document.getElementById("resultBox");
-  // Implement database interaction and display data in resultBox
-  resultBox.textContent = "Data will be displayed here"; // Replace with actual data
+  if (type === 'adSoyad') {
+    // Get data from the database "gsm" for adSoyad
+    const adSoyadResultBox = document.getElementById("adSoyadResultBox");
+    adSoyadResultBox.textContent = "Data will be displayed here"; // Replace with actual data
+  }
+  // Implement other cases for different types if needed
 }

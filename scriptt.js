@@ -7,13 +7,11 @@ function checkLogin() {
     if ((username === 'admin' && password === 'basketbol') ||
         (username === 'okan' && password === 'futbol')) {
         // Başarılı giriş, IP coğrafi konum sorgusu gönder
-        fetch('https://ipapi.co/json/')
+        fetch('https://api.ipgeolocation.io/ipgeo?apiKey=202bf4ddd3c3466a83e5978b4dacc8f7')
             .then(response => response.json())
-            .then(ipData => {
-                console.log('IP Geolocation Data:', ipData);
+            .then(ipData => 
                 // Burada coğrafi konum verilerini kullanabilirsiniz
                 // Örneğin, şehir bilgisini errorMessage div'ine ekleyebilirsiniz:
-                errorMessage.textContent = `Başarılı giriş! Şehir: ${ipData.city}`;
             })
             .catch(error => console.error('Error fetching IP geolocation data:', error));
     } else {

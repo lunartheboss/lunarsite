@@ -5,26 +5,21 @@ body {
     margin: 0;
 }
 
-#sidebar {
-    width: 200px;
-    height: 100vh;
-    background-color: #222;
-    position: fixed;
-    left: 0;
-    top: 0;
-    padding: 20px;
-}
-
-#main-content {
-    margin-left: 200px;
-    padding: 20px;
-}
-
 .glowing-box {
     background-color: #333;
     padding: 20px;
     margin-bottom: 20px;
     box-shadow: 0 0 20px lime;
+    animation: glowing 2s infinite alternate;
+}
+
+@keyframes glowing {
+    from {
+        box-shadow: 0 0 20px lime;
+    }
+    to {
+        box-shadow: 0 0 30px lime;
+    }
 }
 
 h2 {
@@ -48,12 +43,34 @@ button {
     cursor: pointer;
 }
 
-.flags, .countries {
-    display: flex;
-    gap: 10px;
+#sidebar {
+    width: 200px;
+    height: 100vh;
+    background-color: #222;
+    position: fixed;
+    left: -200px;
+    top: 0;
+    padding: 20px;
+    transition: left 0.3s;
+}
+
+#toggleSidebarBtn {
+    background-color: lime;
+    color: black;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+#toggleSidebarBtn:hover {
+    background-color: #00ff00;
+}
+
+.warning {
+    color: red;
+    display: none;
 }
 
 #results {
     display: none;
-    /* Additional styling for results box */
 }

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LUNARCHECK</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="sidebar">
+    <button id="toggleSidebarBtn" onclick="toggleSidebar()">Toggle Sidebar</button>
+    <button id="leaveBtn" onclick="leave()">Leave</button>
+  </div>
+  <div id="mainPanel">
+    <div class="glowingBox" id="tcBox">
+      <h2>TC-GSM SORGULAMA</h2>
+      <input type="text" id="tcInput" placeholder="TC" oninput="validateTCInput(this)">
+      <button class="glowingBtn" onclick="sorgula('tc')">SORGULA</button>
+      <div id="tcWarningMsg"></div>
+    </div>
+
+    <div class="glowingBox" id="adSoyadBox">
+      <h2>AD SOYAD SORGULAMA</h2>
+      <input type="text" id="adInput" placeholder="Ad" oninput="validateTextInput(this)">
+      <input type="text" id="soyadInput" placeholder="Soyad" oninput="validateTextInput(this)">
+      <button class="glowingBtn" onclick="sorgula('adSoyad')">SORGULA</button>
+    </div>
+
+    <div class="glowingBox" id="resultBox">
+      <!-- Data will be displayed here -->
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -30,10 +30,7 @@ function validateTextInput(input) {
 }
 
 function sorgula(type) {
-  if (type === 'adSoyad') {
-    // Get data from the database "gsm" for adSoyad
-    const adSoyadResultBox = document.getElementById("adSoyadResultBox");
-    adSoyadResultBox.textContent = "Data will be displayed here"; // Replace with actual data
-  }
-  // Implement other cases for different types if needed
+  const resultBox = document.getElementById("resultBox");
+  // Implement database interaction and display data in resultBox
+  resultBox.innerHTML = "<strong>Data will be displayed here:</strong><br>ad: John<br>soyad: Doe<br>tc: 1234567890<br>dogumtarihi: 01/01/1990<br>annead: Jane<br>annetc: 0987654321<br>babatc: 9876543210<br>babaad: Bob<br>uyruk: TR"; // Replace with actual data
 }

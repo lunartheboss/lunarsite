@@ -3,59 +3,109 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lunar's Bio</title>
+  <title>Lunar - Bio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Open Sans', sans-serif;
       margin: 0;
+      padding: 0;
       display: flex;
       flex-direction: column;
-      justify-content: center;
       align-items: center;
+      justify-content: center;
       height: 100vh;
-      background-color: #2ecc71;
-      color: #fff;
+      background-color: #f0f0f0; /* Background color */
+    }
+
+    .bio-container {
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      animation: shake 0.5s ease-in-out; /* Shaking text animation */
+    }
+
+    @keyframes shake {
+      0%, 100% {
+        transform: translateX(0);
+      }
+      25%, 75% {
+        transform: translateX(-5px);
+      }
+      50% {
+        transform: translateX(5px);
+      }
     }
 
     h1 {
-      font-size: 2.5em;
-      margin-bottom: 10px;
+      color: #3498db; /* Header text color */
     }
 
     p {
-      font-size: 1.2em;
-      margin-bottom: 20px;
+      color: #555; /* Paragraph text color */
     }
 
     .social-links {
       display: flex;
-      justify-content: center;
+      justify-content: space-around;
+      margin-top: 20px;
     }
 
-    a {
-      margin: 0 10px;
-      color: #fff;
+    .social-link {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       text-decoration: none;
-      font-size: 1.5em;
-      transition: color 0.3s ease;
+      color: #fff;
+      padding: 10px;
+      border-radius: 8px;
+      transition: background-color 0.3s ease;
     }
 
-    a:hover {
-      color: #ecf0f1;
+    .youtube {
+      background-color: #ff0000; /* YouTube red color */
+    }
+
+    .telegram {
+      background-color: #0088cc; /* Telegram blue color */
+    }
+
+    .instagram {
+      background-color: #bc2a8d; /* Instagram pink color */
+    }
+
+    .social-link:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .icon {
+      font-size: 2em;
+      margin-bottom: 5px;
     }
   </style>
 </head>
 <body>
 
-<h1>Lunar's Bio</h1>
-<p>Welcome to Lunar's space! Explore the links below:</p>
+<div class="bio-container">
+  <h1>Lunar</h1>
+  <p>Welcome to my bio website. I'm a creative individual exploring the digital universe.</p>
 
-<div class="social-links">
-  <a href="https://discord.gg/4TjSWKp7" target="_blank">Discord</a>
-  <a href="https://www.youtube.com/@lunarspacex" target="_blank">YouTube</a>
-  <a href="https://www.tiktok.com/@lunarspacex" target="_blank">TikTok</a>
-  <a href="https://t.me/kayraconfig" target="_blank">Telegram</a>
-  <a href="https://www.instagram.com/lunarshitpostt/" target="_blank">Instagram</a>
+  <div class="social-links">
+    <a href="https://www.youtube.com/lunarspacex" class="social-link youtube" target="_blank">
+      <span class="icon">&#9654;</span>
+      YouTube
+    </a>
+    <a href="https://t.me/kayraconfig" class="social-link telegram" target="_blank">
+      <span class="icon">&#10140;</span>
+      Telegram
+    </a>
+    <a href="https://www.instagram.com/lunarshitpostt/" class="social-link instagram" target="_blank">
+      <span class="icon">&#127775;</span>
+      Instagram
+    </a>
+  </div>
 </div>
 
 </body>

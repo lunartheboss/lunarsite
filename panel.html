@@ -9,7 +9,7 @@
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #f4f4f4;
+      background-color: #8bc34a; /* Lime color theme */
     }
 
     .panel {
@@ -19,7 +19,7 @@
 
     .sidebar {
       width: 250px;
-      background-color: #333;
+      background-color: #4caf50; /* Darker green for the sidebar */
       color: #fff;
       padding: 20px;
       box-sizing: border-box;
@@ -53,37 +53,30 @@
     }
 
     .category-link:hover {
-      background-color: #555;
+      background-color: #3d8b40; /* Darker green on hover */
     }
 
-    .text-input {
+    /* Input styles */
+    input {
       width: 100%;
       padding: 8px;
       margin-bottom: 10px;
       box-sizing: border-box;
     }
 
-    .button {
-      background-color: #3498db;
+    button {
+      background-color: #4caf50; /* Original green color */
       color: #fff;
       padding: 10px;
       border: none;
       border-radius: 4px;
       cursor: pointer;
-      width: 100%;
       font-size: 1.2em;
+      transition: background-color 0.3s ease;
     }
 
-    .button:hover {
-      background-color: #2980b9;
-    }
-
-    .alert-box {
-      margin-top: 20px;
-      padding: 10px;
-      background-color: #e74c3c;
-      color: #fff;
-      display: none;
+    button:hover {
+      background-color: #3d8b40; /* Darker green on hover */
     }
   </style>
 </head>
@@ -93,46 +86,57 @@
   <div class="sidebar">
     <h2>Lunarcheck Sidebar</h2>
     <ul class="category-list">
-      <li class="category-item"><a href="#" class="category-link" onclick="showMernisContent()">MERNİS</a></li>
+      <li class="category-item"><a href="#" class="category-link">Category 1</a></li>
+      <li class="category-item"><a href="#" class="category-link">Category 2</a></li>
+      <li class="category-item"><a href="#" class="category-link">Category 3</a></li>
+      <li class="category-item"><a href="#" class="category-link">MERNİS</a></li>
       <!-- Add more categories as needed -->
     </ul>
   </div>
 
   <div class="main-content">
-    <div id="mernisContent" style="display: none;">
-      <h2>MERNİS Content</h2>
-      <label for="tc">TC:</label>
-      <input type="text" id="tc" class="text-input">
+    <h2>MERNİS Content</h2>
+    <label for="tc">TC:</label>
+    <input type="text" id="tc" name="tc" maxlength="11" placeholder="Enter TC">
 
-      <button class="button" onclick="queryMernis()">SORGULA</button>
+    <button onclick="sorgula()">SORGULA</button>
 
-      <div class="alert-box" id="gsmAlertBox">GSM</div>
-    </div>
+    <label for="gsm">GSM:</label>
+    <input type="text" id="gsm" name="gsm" readonly>
 
-    <!-- Add more content sections as needed -->
+    <hr>
 
+    <label for="ad">AD:</label>
+    <input type="text" id="ad" name="ad" placeholder="Enter AD">
+
+    <label for="soyad">SOYAD:</label>
+    <input type="text" id="soyad" name="soyad" placeholder="Enter SOYAD">
+
+    <button onclick="validateAndAlert()">Submit</button>
   </div>
 </div>
 
 <script>
-  function showMernisContent() {
-    document.getElementById('mernisContent').style.display = 'block';
-  }
-
-  function queryMernis() {
-    const tcValue = document.getElementById('tc').value;
-    const gsmAlertBox = document.getElementById('gsmAlertBox');
-
+  function sorgula() {
+    var tcValue = document.getElementById('tc').value;
     if (tcValue === '') {
-      alert("TC cannot be blank.");
-    } else {
-      // Check database or perform other actions
-      // For now, we'll show an alert
-      gsmAlertBox.style.display = 'block';
-      alert("DataBasede Data Yok Aw");
+      alert('Please enter TC.');
+      return;
     }
-  }
-</script>
 
-</body>
-</html>
+    // Simulating database check
+    var gsmElement = document.getElementById('gsm');
+    gsmElement.value = '12345678901'; // Set a dummy value for demonstration
+    alert('DataFoundAw');
+  }
+
+  function validateAndAlert() {
+    var adValue = document.getElementById('ad').value;
+    var soyadValue = document.getElementById('soyad').value;
+
+    if (adValue === '' || soyadValue === '' || !/^[a-zA-Z]+$/.test(adValue) || !/^[a-zA-Z]+$/.test(soyadValue)) {
+      alert('Data yok, admine yaz aw');
+    } else {
+      alert('DataSubmittedAw');
+    }
+ 

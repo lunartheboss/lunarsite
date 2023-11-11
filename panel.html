@@ -7,8 +7,8 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div id="sidebar">
-    <button id="toggleSidebarBtn" onclick="toggleSidebar()">☰ Toggle Sidebar</button>
+  <div id="sidebar" class="closed">
+    <button id="toggleSidebarBtn" onclick="toggleSidebar()">☰</button>
     <button id="leaveBtn" onclick="leave()">Leave</button>
   </div>
   <div id="mainPanel">
@@ -19,7 +19,7 @@
       <div id="tcWarningMsg"></div>
     </div>
 
-    <div class="glowingBox wide" id="adSoyadBox">
+    <div class="glowingBox bigWideBox" id="adSoyadBox">
       <h2>AD SOYAD SORGULAMA</h2>
       <input type="text" id="adInput" placeholder="Ad" oninput="validateTextInput(this)">
       <input type="text" id="soyadInput" placeholder="Soyad" oninput="validateTextInput(this)">

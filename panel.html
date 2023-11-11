@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dynamic Panel</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background-color: #f4f4f4;
+    }
+
+    .panel-container {
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      width: 400px;
+      text-align: center;
+    }
+
+    .header {
+      background-color: #3498db;
+      color: #fff;
+      padding: 20px;
+    }
+
+    .content {
+      padding: 20px;
+    }
+
+    .loading-dots {
+      font-size: 2em;
+      display: inline-block;
+      animation: rotateDots 1s infinite linear;
+    }
+
+    @keyframes rotateDots {
+      0% {
+        transform: translate(0);
+      }
+      25% {
+        transform: translate(8px);
+      }
+      50% {
+        transform: translate(0);
+      }
+      75% {
+        transform: translate(-8px);
+      }
+      100% {
+        transform: translate(0);
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="panel-container">
+  <div class="header">
+    <h2>Dynamic Panel</h2>
+  </div>
+  <div class="content">
+    <p>Content goes here...</p>
+    <div class="loading-dots">...</div>
+  </div>
+</div>
+
+</body>
+</html>

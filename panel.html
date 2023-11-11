@@ -8,7 +8,7 @@
 </head>
 <body>
   <div id="sidebar">
-    <button id="toggleSidebarBtn" onclick="toggleSidebar()">Toggle Sidebar</button>
+    <button id="toggleSidebarBtn" onclick="toggleSidebar()">☰ Toggle Sidebar</button>
     <button id="leaveBtn" onclick="leave()">Leave</button>
   </div>
   <div id="mainPanel">
@@ -19,15 +19,14 @@
       <div id="tcWarningMsg"></div>
     </div>
 
-    <div class="glowingBox" id="adSoyadBox">
+    <div class="glowingBox wide" id="adSoyadBox">
       <h2>AD SOYAD SORGULAMA</h2>
       <input type="text" id="adInput" placeholder="Ad" oninput="validateTextInput(this)">
       <input type="text" id="soyadInput" placeholder="Soyad" oninput="validateTextInput(this)">
       <button class="glowingBtn" onclick="sorgula('adSoyad')">SORGULA</button>
-    </div>
-
-    <div class="glowingBox" id="resultBox">
-      <!-- Data will be displayed here -->
+      <div id="resultBox">
+        <!-- Data will be displayed here -->
+      </div>
     </div>
   </div>
 

@@ -7,22 +7,14 @@
     <title>LUNARCHECK</title>
 </head>
 <body>
-    <div id="sidebar">
-        <button id="toggleSidebarBtn" onclick="toggleSidebar()">&#9776; Toggle Sidebar</button>
-        <button id="leaveBtn" onclick="leave()">Leave</button>
-    </div>
-    
     <div id="main-content">
         <div class="glowing-box">
             <h2>GSM SORGULAMA</h2>
             <input type="text" id="gsmInput" placeholder="GSM YADA TC">
             <button onclick="performGsmQuery()">SORGULA</button>
             <div class="flags">
-                <label><input type="checkbox" value="turkey"> Turkey</label>
-                <label><input type="checkbox" value="usa"> USA</label>
-                <label><input type="checkbox" value="russia"> Russia</label>
+                <!-- Add checkboxes for Turkey, USA, and Russia flags -->
             </div>
-            <p id="gsmWarning" class="warning">Incorrect entry</p>
         </div>
 
         <div class="glowing-box">
@@ -31,9 +23,7 @@
             <input type="text" id="soyadInput" placeholder="Soyad">
             <button onclick="performNameQuery()">SORGULA</button>
             <div class="countries">
-                <label><input type="checkbox" value="turkey"> Turkey</label>
-                <label><input type="checkbox" value="usa"> USA</label>
-                <label><input type="checkbox" value="russia"> Russia</label>
+                <!-- Add checkboxes for Turkey, USA, and Russia -->
             </div>
         </div>
 

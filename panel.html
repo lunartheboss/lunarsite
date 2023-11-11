@@ -56,35 +56,20 @@
       background-color: #555;
     }
 
-    .form-container {
-      margin-top: 20px;
+    .mernis-content {
+      display: none;
     }
 
-    label {
-      display: block;
-      margin-bottom: 8px;
+    .textbox {
+      margin-bottom: 10px;
     }
 
-    input {
-      width: 100%;
-      padding: 8px;
-      margin-bottom: 16px;
-      box-sizing: border-box;
-    }
-
-    button {
-      background-color: #3498db;
+    .alert-box {
+      background-color: #f44336;
       color: #fff;
       padding: 10px;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      width: 100%;
-      font-size: 1.2em;
-    }
-
-    button:hover {
-      background-color: #2980b9;
+      margin-top: 10px;
+      display: none;
     }
   </style>
 </head>
@@ -94,33 +79,39 @@
   <div class="sidebar">
     <h2>Lunarcheck Sidebar</h2>
     <ul class="category-list">
-      <li class="category-item"><a href="#" class="category-link">Category 1</a></li>
-      <li class="category-item"><a href="#" class="category-link">Category 2</a></li>
-      <li class="category-item">
-        <a href="#" class="category-link">MERNİS</a>
-        <div class="form-container" id="mernisForm">
-          <label for="ad">AD:</label>
-          <input type="text" id="ad" name="ad" required>
-
-          <label for="soyad">SOYAD:</label>
-          <input type="text" id="soyad" name="soyad" required>
-
-          <button onclick="sorgula()">SORGULA</button>
-        </div>
-      </li>
+      <li class="category-item"><a href="#" class="category-link" onclick="showMernisContent()">MERNİS</a></li>
       <!-- Add more categories as needed -->
     </ul>
   </div>
 
   <div class="main-content">
     <h2>Main Content</h2>
-    <p>This is the main content area.</p>
+    <div class="mernis-content">
+      <label for="tcInput" class="textbox">TC:</label>
+      <input type="text" id="tcInput" class="textbox" placeholder="Enter TC">
+      <button onclick="checkMernis()">SORGULA</button>
+      <div class="alert-box" id="alertBox">DataBasede Data Yok Aw</div>
+      <div id="gsmBox"></div>
+    </div>
   </div>
 </div>
 
 <script>
-  function sorgula() {
-    alert("DataBasede Data Yok Aw");
+  function showMernisContent() {
+    document.querySelector('.mernis-content').style.display = 'block';
+  }
+
+  function checkMernis() {
+    const tcInput = document.getElementById('tcInput').value;
+    const alertBox = document.getElementById('alertBox');
+    const gsmBox = document.getElementById('gsmBox');
+
+    if (tcInput) {
+      alertBox.style.display = 'none';
+      gsmBox.innerText = 'GSM';
+    } else {
+      alertBox.style.display = 'block';
+    }
   }
 </script>
 

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome to LunarCheck</title>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      background-color: black;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    .glowing-box {
+      position: relative;
+      display: inline-block;
+      padding: 20px;
+      background: linear-gradient(45deg, #4CAF50, #45a049);
+      color: white;
+      border-radius: 8px;
+      animation: glow 2s infinite, shake 2s infinite;
+      font-family: 'Open Sans', sans-serif;
+    }
+
+    @keyframes glow {
+      0% {
+        box-shadow: 0 0 20px rgba(0, 255, 0, 0.8), 0 0 40px rgba(0, 255, 0, 0.6), 0 0 60px rgba(0, 255, 0, 0.4);
+      }
+      50% {
+        box-shadow: 0 0 20px rgba(0, 255, 0, 0.8), 0 0 40px rgba(0, 255, 0, 0.6), 0 0 60px rgba(0, 255, 0, 0.4);
+      }
+      100% {
+        box-shadow: 0 0 20px rgba(0, 255, 0, 0.8), 0 0 40px rgba(0, 255, 0, 0.6), 0 0 60px rgba(0, 255, 0, 0.4);
+      }
+    }
+
+    @keyframes shake {
+      0% {
+        transform: translateX(0);
+      }
+      25% {
+        transform: translateX(-5px);
+      }
+      50% {
+        transform: translateX(5px);
+      }
+      75% {
+        transform: translateX(-5px);
+      }
+      100% {
+        transform: translateX(5px);
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="glowing-box">
+  Welcome to LunarCheck
+</div>
+
+</body>
+</html>
